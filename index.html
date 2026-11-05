@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shape, Size, Space — Practice</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --accent:#4f46e5; --accent2:#6366f1; --ok:#16a34a; --bad:#dc2626;
+    --line:#e5e7eb;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:"Segoe UI", Roboto, Arial, sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.55;
+  }
+  header{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:#fff; padding:36px 20px; text-align:center;
+  }
+  header h1{margin:0 0 8px; font-size:1.7rem}
+  header p{margin:0; opacity:.9; font-size:.95rem}
+  main{max-width:900px; margin:0 auto; padding:24px 16px 60px}
+
+  .card{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:14px; padding:22px; margin-bottom:22px;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+  }
+  .card h2{
+    margin:0 0 6px; font-size:1.15rem; color:var(--accent);
+  }
+  .hint{color:var(--muted); font-size:.88rem; margin:0 0 14px}
+
+  /* картинки */
+  .figure{
+    display:flex; gap:16px; flex-wrap:wrap; justify-content:center;
+    margin:14px 0;
+  }
+  .figure figure{
+    margin:0; text-align:center; background:#fafafa;
+    border:1px dashed var(--line); border-radius:10px; padding:10px;
+  }
+  .figure figcaption{font-size:.8rem; color:var(--muted); margin-top:6px}
+  svg{display:block; background:#fff; border-radius:6px}
+
+  /* поля ввода */
+  .q{margin:0 0 14px}
+  .q label{display:block; font-weight:600; margin-bottom:6px; font-size:.95rem}
+  input[type="text"]{
+    width:100%; padding:10px 12px; font-size:1rem;
+    border:2px solid var(--line); border-radius:8px; outline:none;
+    transition:border-color .15s;
+  }
+  input[type="text"]:focus{border-color:var(--accent2)}
+
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+
+  /* кнопки */
+  button{
+    background:var(--accent); color:#fff; border:none; cursor:pointer;
+    padding:12px 22px; font-size:1rem; border-radius:10px; font-weight:600;
+    transition:background .15s;
+  }
+  button:hover{background:#4338ca}
+  button.secondary{background:#e5e7eb; color:var(--ink)}
+  button.secondary:hover{background:#d1d5db}
+  .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px}
+
+  /* результаты */
+  .feedback{margin-top:8px; font-size:.9rem; font-weight:600; min-height:1.2em}
+  .feedback.ok{color:var(--ok)}
+  .feedback.bad{color:var(--bad)}
+  input.correct{border-color:var(--ok); background:#f0fdf4}
+  input.wrong{border-color:var(--bad); background:#fef2f2}
+
+  .score{
+    position:sticky; top:0; z-index:10;
+    background:#111827; color:#fff; border-radius:12px;
+    padding:14px 18px; margin-bottom:22px;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:8px; font-weight:600;
+  }
+  .score .big{font-size:1.25rem; color:#a5b4fc}
+
+  ul.rules{margin:8px 0 0; padding-left:20px; color:var(--muted); font-size:.88rem}
+
+  .word-bank{
+    display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px;
+  }
+  .word-bank span{
+    background:#eef2ff; color:#3730a3; border-radius:999px;
+    padding:5px 14px; font-size:.85rem; font-weight:600;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Shape, Size, Space in Graphic Design</h1>
+  <p>Level B1 · Practice exercises · Type your answers and check them</p>
+</header>
+
+<main>
+
+  <div class="score" id="scoreBar">
+    <span>Your result: <span class="big" id="scoreText">0 / 0</span></span>
+    <span id="scoreNote" style="font-weight:400;opacity:.85">Complete the tasks and press "Check answers".</span>
+  </div>
+
+  <!-- ================= 1. Definitions ================= -->
+  <section class="card" data-task="definitions">
+    <h2>1. Match the words with the definitions</h2>
+    <p class="hint">Write the correct word (one word or phrase) for each definition.</p>
+
+    <div class="figure">
+      <figure>
+        <svg width="180" height="130" viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="15" width="140" height="100" fill="#e0e7ff" stroke="#c7d2fe"/>
+          <rect x="45" y="35" width="90" height="60" fill="#fff" stroke="#9ca3af"/>
+          <circle cx="90" cy="65" r="18" fill="#4f46e5"/>
+          <text x="90" y="108" font-size="9" fill="#6b7280" text-anchor="middle">margin · negative space</text>
+        </svg>
+        <figcaption>spacing around objects</figcaption>
+      </figure>
+      <figure>
+        <svg width="180" height="130" viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="180" height="130" fill="#f3f4f6"/>
+          <circle cx="60" cy="60" r="28" fill="#e5e7eb"/>
+          <circle cx="110" cy="70" r="16" fill="#4f46e5"/>
+          <text x="90" y="120" font-size="9" fill="#6b7280" text-anchor="middle">background / foreground</text>
+        </svg>
+        <figcaption>front and back layers</figcaption>
+      </figure>
+    </div>
+
+    <div class="q" data-answers="margin">
+      <label>1. The space between the edge of a page and the text or picture.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="negative space|negative">
+      <label>2. The empty area around and between objects in a design.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="triangle">
+      <label>3. A shape with three sides and three angles.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="background">
+      <label>4. The area behind the main objects in a picture.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="gap|spacing">
+      <label>5. The empty space between two elements.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="symmetrical|symmetric">
+      <label>6. Having two halves that are exactly the same.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+  </section>
+
+  <!-- ================= 2. Fill the gaps ================= -->
+  <section class="card" data-task="fill">
+    <h2>2. Fill in the gaps</h2>
+    <p class="hint">Choose a suitable word from the word bank. One word for each gap.</p>
+    <div class="word-bank">
+      <span>square</span><span>tiny</span><span>negative</span><span>gap</span>
+      <span>background</span><span>foreground</span><span>symmetrical</span>
+      <span>margin</span><span>curve</span>
+    </div>
+
+    <div class="figure">
+      <figure>
+        <svg width="150" height="120" viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="20" width="90" height="80" fill="#4f46e5"/>
+          <text x="75" y="112" font-size="9" fill="#6b7280" text-anchor="middle">square</text>
+        </svg>
+      </figure>
+      <figure>
+        <svg width="150" height="120" viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 90 Q75 10 130 90" fill="none" stroke="#4f46e5" stroke-width="5" stroke-linecap="round"/>
+          <text x="75" y="112" font-size="9" fill="#6b7280" text-anchor="middle">curve</text>
+        </svg>
+      </figure>
+      <figure>
+        <svg width="150" height="120" viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg">
+          <rect x="15" y="15" width="120" height="90" fill="#fff" stroke="#c7d2fe"/>
+          <rect x="55" y="35" width="40" height="50" fill="#4f46e5"/>
+          <line x1="55" y1="35" x2="55" y2="85" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3 2"/>
+          <line x1="95" y1="35" x2="95" y2="85" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3 2"/>
+          <text x="75" y="112" font-size="9" fill="#6b7280" text-anchor="middle">symmetrical</text>
+        </svg>
+      </figure>
+    </div>
+
+    <div class="q" data-answers="square">
+      <label>1. A ______ has four equal sides and four right angles.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="tiny|small">
+      <label>2. The logo is very ______ — it's just 2 cm wide.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="gap|spacing">
+      <label>3. There is too much ______ between the text and the picture; they look disconnected.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="negative">
+      <label>4. Designers often use ______ space to make a logo look clean and modern.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="background">
+      <label>5. The text in the ______ is blurry, but the logo is sharp.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="symmetrical|symmetric">
+      <label>6. This design is ______: the left and right halves are the same.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="margin">
+      <label>7. Please make the ______ wider — the text is too close to the edge of the page.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="curve">
+      <label>8. A ______ is a curved line, not a straight one.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+  </section>
+
+  <!-- ================= 3. Word formation ================= -->
+  <section class="card" data-task="formation">
+    <h2>3. Word formation</h2>
+    <p class="hint">Use the correct form of the word in brackets.</p>
+    <div class="q" data-answers="width">
+      <label>1. The ______ (wide) of the banner is 1080 pixels.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="symmetrical|symmetric">
+      <label>2. This shape looks very ______ (symmetry).</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="length">
+      <label>3. We need to change the ______ (long) of the line.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="height">
+      <label>4. The ______ (high) of the logo is too big for the page.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="sharp">
+      <label>5. The corners are too ______ (sharp) — make them rounder.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="spacing">
+      <label>6. Try to keep the ______ (space) between elements equal.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+  </section>
+
+  <!-- ================= 4. Comparatives ================= -->
+  <section class="card" data-task="comparatives">
+    <h2>4. Comparatives and superlatives</h2>
+    <p class="hint">Open the brackets and write the correct form.</p>
+
+    <div class="figure">
+      <figure>
+        <svg width="170" height="110" viewBox="0 0 170 110" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="55" cy="55" r="30" fill="#c7d2fe"/>
+          <circle cx="120" cy="55" r="16" fill="#4f46e5"/>
+          <text x="85" y="102" font-size="9" fill="#6b7280" text-anchor="middle">bigger / smaller</text>
+        </svg>
+      </figure>
+      <figure>
+        <svg width="170" height="110" viewBox="0 0 170 110" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="85,15 130,90 40,90" fill="#4f46e5"/>
+          <text x="85" y="105" font-size="9" fill="#6b7280" text-anchor="middle">the sharpest shape</text>
+        </svg>
+      </figure>
+    </div>
+
+    <div class="q" data-answers="bigger">
+      <label>1. This circle is ______ (big) than that one.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="sharpest">
+      <label>2. The triangle is the ______ (sharp) shape in the logo.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="wider">
+      <label>3. The margin on the left is ______ (wide) than on the right.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="smallest">
+      <label>4. This is the ______ (small) element on the poster.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="more important">
+      <label>5. Negative space is ______ (important) than many people think.</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+    <div class="q" data-answers="as large|as big">
+      <label>6. The two squares are ______ (large) as each other. (as … as)</label>
+      <input type="text" placeholder="Your answer...">
+    </div>
+  </section>
+
+  <!-- ================= 5. Correct the mistakes ================= -->
+  <section class="card" data-task="mistakes">
+    <h2>5. Correct the mistakes</h2>
+    <p class="hint">Each sentence has one mistake. Write the whole corrected sentence.</p>
+
+    <div class="q" data-answers="this circle is bigger than that one">
+      <label>1. This circle is more big than that one.</label>
+      <input type="text" placeholder="Corrected sentence...">
+    </div>
+    <div class="q" data-answers="the margins are too narrow|the margin is too narrow">
+      <label>2. The margin are too narrow.</label>
+      <input type="text" placeholder="Corrected sentence...">
+    </div>
+    <div class="q" data-answers="there is a lot of negative space around the logo|there is much negative space around the logo">
+      <label>3. There is many negative space around the logo.</label>
+      <input type="text" placeholder="Corrected sentence...">
+    </div>
+    <div class="q" data-answers="the logo has a sharp corner">
+      <label>4. The logo have a sharp corner.</label>
+      <input type="text" placeholder="Corrected sentence...">
+    </div>
+    <div class="q" data-answers="the width of the banner is 1080 pixels">
+      <label>5. The width of the banner are 1080 pixels.</label>
+      <input type="text" placeholder="Corrected sentence...">
+    </div>
+  </section>
+
+  <!-- ================= 6. Open task ================= -->
+  <section class="card" data-task="open">
+    <h2>6. Describe the design (open task)</h2>
+    <p class="hint">
+      Look at the poster below and write 3–5 sentences. Use at least <b>4 words</b> from the topic
+      and <b>1 comparison</b>. This task is checked by your teacher (self-check with the checklist).
+    </p>
+
+    <div class="figure">
+      <figure>
+        <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- постер -->
+          <rect x="10" y="10" width="280" height="180" fill="#ffffff" stroke="#d1d5db"/>
+          <!-- фон-прямоугольник -->
+          <rect x="40" y="35" width="220" height="130" fill="#eef2ff"/>
+          <!-- большой круг -->
+          <circle cx="150" cy="95" r="48" fill="#4f46e5"/>
+          <!-- маленький треугольник -->
+          <polygon points="60,140 85,140 72,115" fill="#f59e0b"/>
+          <!-- линия -->
+          <line x1="190" y1="130" x2="245" y2="130" stroke="#111827" stroke-width="3"/>
+          <!-- текст -->
+          <text x="150" y="165" font-size="11" fill="#111827" text-anchor="middle" font-family="Arial">DESIGN STUDIO</text>
+        </svg>
+        <figcaption>Describe shapes, sizes and space in this poster</figcaption>
+      </figure>
+    </div>
+
+    <div class="q" data-open="1">
+      <label>Your description (3–5 sentences):</label>
+      <input type="text" placeholder="Start here... In this poster I can see...">
+    </div>
+    <div class="q" data-open="1">
+      <label>Continue (optional):</label>
+      <input type="text" placeholder="...">
+    </div>
+    <div class="q" data-open="1">
+      <label>Continue (optional):</label>
+      <input type="text" placeholder="...">
+    </div>
+
+    <ul class="rules">
+      <li>4+ topic words: shape / size / space vocabulary</li>
+      <li>1 comparison: bigger than / as … as / less … than</li>
+      <li>Clear structure: what you see → how space is used → your opinion</li>
+    </ul>
+  </section>
+
+  <!-- ================= Actions ================= -->
+  <div class="actions">
+    <button id="checkBtn">Check answers</button>
+    <button class="secondary" id="resetBtn">Reset</button>
+  </div>
+  <p class="feedback" id="feedback"></p>
+</main>
+
+<script>
+(function(){
+  const norm = (s) => (s || "")
+    .toLowerCase()
+    .replace(/[.,!?;:"'`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const checkBtn = document.getElementById("checkBtn");
+  const resetBtn = document.getElementById("resetBtn");
+  const scoreText = document.getElementById("scoreText");
+  const scoreNote = document.getElementById("scoreNote");
+  const feedback = document.getElementById("feedback");
+
+  function getQuestions(){
+    return Array.from(document.querySelectorAll(".q"));
+  }
+
+  function checkAnswers(){
+    const questions = getQuestions();
+    let scored = 0;
+    let total = 0;
+
+    questions.forEach(q => {
+      const input = q.querySelector("input");
+      if (!input) return;
+
+      // открытые задания не оцениваются автоматически
+      if (q.dataset.open) {
+        input.classList.remove("correct","wrong");
+        return;
+      }
+
+      total++;
+      const allowed = (q.dataset.answers || "")
+        .split("|")
+        .map(norm)
+        .filter(Boolean);
+
+      const user = norm(input.value);
+
+      if (user && allowed.includes(user)) {
+        input.classList.add("correct");
+        input.classList.remove("wrong");
+        scored++;
+      } else {
+        input.classList.add("wrong");
+        input.classList.remove("correct");
+      }
+    });
+
+    scoreText.textContent = scored + " / " + total;
+    scoreNote.textContent = scored === total
+      ? "Excellent! All answers are correct. 🎉"
+      : "Green = correct, red = needs work. Try again!";
+
+    feedback.textContent = scored === total
+      ? "Well done! Now complete the open task (exercise 6) and ask your teacher to check it."
+      : "Some answers are not correct yet. Read the sentences again and try again.";
+    feedback.className = "feedback " + (scored === total ? "ok" : "bad");
+
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function resetAll(){
+    getQuestions().forEach(q => {
+      const input = q.querySelector("input");
+      if (!input) return;
+      input.value = "";
+      input.classList.remove("correct","wrong");
+    });
+    scoreText.textContent = "0 / 0";
+    scoreNote.textContent = "Complete the tasks and press \"Check answers\".";
+    feedback.textContent = "";
+    feedback.className = "feedback";
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  checkBtn.addEventListener("click", checkAnswers);
+  resetBtn.addEventListener("click", resetAll);
+
+  // Enter внутри поля = проверка
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && e.target.tagName === "INPUT") {
+      e.preventDefault();
+      checkAnswers();
+    }
+  });
+})();
+</script>
+</body>
+</html>
